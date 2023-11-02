@@ -39,7 +39,7 @@ int main () {
                 } else {
                     if(posY == y && posX == x) {
                         rlutil::setColor(rlutil::GREEN);
-                        cout<<"S";
+                        cout<<(char)237;
                     }
                     else {
                         cout<<" ";
