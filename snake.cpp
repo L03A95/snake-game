@@ -4,19 +4,54 @@
 using namespace std;
 
 int main () {
-    for (int y = 0; y < 40; y++) {
-        for (int x = 0; x < 70; x++)
+    int posY = 20, posX = 35;
+    int direction = 0;
+
+    while (true) {
+
+        int key = rlutil::nb_getch();
+        key == 0 ? direction = direction : direction = key;
+        switch (direction)
         {
-            if(y == 0 || y == 39 || x == 0 || x == 69) {
-                cout<<"X";
-            } else {
-                cout<<" ";
-            }
+        case 119:
+            posY -= 1;
+            break;
+        case 100:
+            posX += 1;
+            break;
+        case 115:
+            posY += 1;
+            break;
+        case 97:
+            posX -= 1;
+            break;
+        
+        default:
+            break;
         }
+        rlutil::cls();
+
+        for (int y = 0; y < 40; y++) {
+            for (int x = 0; x < 70; x++) {
+                if(y == 0 || y == 39 || x == 0 || x == 69) {
+                    rlutil::setColor(rlutil::RED);
+                    cout<<"X";
+                } else {
+                    if(posY == y && posX == x) {
+                        rlutil::setColor(rlutil::GREEN);
+                        cout<<"S";
+                    }
+                    else {
+                        cout<<" ";
+                    }
+                }
+            }
         cout<<endl;
-    }
+        }
     
-    rlutil::getkey(KEY_UP);
+
+    rlutil::msleep(200);
+    }
 
     return 0;
 }
