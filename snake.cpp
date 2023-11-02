@@ -22,6 +22,9 @@ int main () {
     int posY = 20, posX = 35, direction = 0, puntaje = 0, appleY = 0, appleX = 0;
 
     while (true) {
+        if(posX <= 0 || posX >= 69 || posY <= 0 || posY >= 39) {
+            break;
+        }        
 
         if(posY == appleY && posX == appleX) {
             appleY = 0;
@@ -69,7 +72,7 @@ int main () {
                         rlutil::setColor(rlutil::GREEN);
                         cout<<(char)237;
                     }
-                    else if (appleY == y && appleX == x) {
+                    else if (appleY == y && appleX == x) { //GENERAR MANZANA
                         rlutil::setColor(rlutil::YELLOW);
                         cout<<(char)149;
                     }
@@ -85,5 +88,12 @@ int main () {
     rlutil::msleep(200);
     }
 
+    rlutil::setColor(rlutil::CYAN);
+
+    rlutil::cls();
+
+    cout<<"==================="<<endl;
+    cout<<"TU PUNTAJE ES DE "<<puntaje<<endl;
+    cout<<"==================="<<endl<<endl;
     return 0;
 }
